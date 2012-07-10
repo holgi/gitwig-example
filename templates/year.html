@@ -1,0 +1,20 @@
+<html xmlns:py="http://genshi.edgewall.org/" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="layout.html" />
+<head>
+    <title>Index für ${content.as_datetime().strftime('%Y')}</title>
+</head>
+<body>
+    <div class="container_12 headline_container">
+        <div class="grid_2">&nbsp;</div>
+        <h1 class="grid_8 center">Index für ${content.as_datetime().strftime('%Y')}</h1>
+        <div class="grid_2">&nbsp;</div>
+    </div>
+    <ol class="blog_post_list">
+        <li  class="container_12 article_list" py:for="blog_post in content.content">
+            ${blog_listing(blog_post)}
+        </li>
+    </ol>
+</body>
+</html>

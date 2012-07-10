@@ -1,0 +1,22 @@
+<html xmlns:py="http://genshi.edgewall.org/" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="layout.html" />
+<head>
+    <title>${content.as_datetime().strftime('%A, den %d. %B %Y')}</title>
+</head>
+<body>
+    <div class="container_12 headline_container">
+        <div class="grid_2">&nbsp;</div>
+        <h1 class="grid_8 center" py:with="date=content.as_datetime()">
+            ${date.strftime('%A, der %d.')}
+            <a href="${settings.url_prefix}/${date.strftime('%Y/%m')}/">${date.strftime('%B')}</a>
+            <a href="${settings.url_prefix}/${date.strftime('%Y')}/">${date.strftime('%Y')}</a>
+        </h1>
+        <div class="grid_2">&nbsp;</div>
+    </div>
+    <article py:for="blog_post in content.content">
+        ${blog_article(blog_post, True)}
+    </article>
+</body>
+</html>

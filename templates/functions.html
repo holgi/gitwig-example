@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/" py:strip="">
+
+<?python import datetime ?>
+<?python from genshi import HTML ?>
+
+<py:def function="link_tag(tag_name)"><a href="${settings.url_prefix}/tags/${tag_name}.html">${tag_name}</a></py:def>
+
+<py:def function="link_tag_list(tags)">
+    <py:if test="tags">
+        ${link_tag(tags[0])}<py:for each="rest_tag in tags[1:]">, ${link_tag(rest_tag)}</py:for>
+    </py:if>
+</py:def>
+
+<py:def function="link_content(content_object, text)">
+    <a href="${settings.url_prefix}/${'/'.join(content_object.get_url_parts())}">${text}</a>
+</py:def>
+
+<py:def function="blog_link(posting)">
+    ${link_content(posting, posting.headers['title'])}
+</py:def>
+
+<py:def function="blog_listing(posting)">
+    <div class="grid_2 meta meta-left" py:with="date=posting.headers['created']">
+        <a href="${settings.url_prefix}/${date.strftime('%Y/%m/%d')}/">${date.strftime('%d.%m.%Y')}</a>
+    </div>
+    <div class="grid_8 article_content center">${blog_link(posting)}</div>
+    <div class="grid_2 meta meta-right">
+        ${link_tag_list(list(posting.headers['tags']))}
+    </div>
+    <div class="clear"></div>
+</py:def>
+
+<py:def function="blog_article(posting, include_meta=True, link_day=False)">
+    <div class="grid_2 meta meta-left" py:if="include_meta and not link_day">
+        ${link_content(posting, posting.headers['created'].strftime('%d.%m.%Y %H:%M'))}
+    </div>
+    <div class="grid_2 meta meta-left" py:if="include_meta and link_day" py:with="date=posting.headers['created']">
+        <a href="${settings.url_prefix}/${date.strftime('%Y/%m/%d')}/">${date.strftime('%d.%m.%Y')}</a>
+    </div>
+    <div class="grid_8 article_content">
+        ${HTML(converter(posting.get_body()))}
+    </div>
+    <div class="grid_2 meta meta-right" py:if="include_meta">
+        ${link_tag_list(list(posting.headers['tags']))}
+    </div>
+    <div class="clear"></div>
+</py:def>
+
+
+</html>
+

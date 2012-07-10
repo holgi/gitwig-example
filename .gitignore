@@ -1,0 +1,5 @@
+.DS_Store
+deploy/*
+cache.pickle
+config.yaml
+gitwig.log

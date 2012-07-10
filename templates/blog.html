@@ -1,0 +1,15 @@
+<html xmlns:py="http://genshi.edgewall.org/" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="layout.html" />
+<head>
+    <title>Hello, how – Oh look there …</title>
+    <link rel="alternate" type="application/atom+xml" title="articles" href="${settings.url_prefix}/feed.xml" />
+</head>
+<body>
+    <article py:for="blog_post in content.content">
+        ${blog_article(blog_post, True)}
+    </article>
+</body>
+</html>
+

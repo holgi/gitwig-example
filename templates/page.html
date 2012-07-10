@@ -1,0 +1,22 @@
+<html xmlns:py="http://genshi.edgewall.org/" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="layout.html" />
+<head>
+    <title>${content.headers.get('title', 'untitled')}</title>
+</head>
+<body>
+    <article class="container_12">
+         <div class="grid_2 meta meta-left">
+            &nbsp;
+        </div>
+        <div class="grid_8 article_content">
+            ${HTML(converter(content.get_body()))}
+        </div>
+        <div class="grid_2 meta meta-right">
+            &nbsp;
+        </div>
+    </article>
+    <div class="clear"></div>
+</body>
+</html>
