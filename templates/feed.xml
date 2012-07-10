@@ -5,7 +5,7 @@
     <xi:include href="functions.html" />
 
     <title>${settings.blog_title}</title>
-    <id>${settings.url_prefix}</id>
+    <id>${settings.url_prefix}/</id>
     <link rel="alternate" href="${settings.url_prefix}" type="text/html" />
     <link rel="self" href="${settings.url_prefix}/feed.xml" type="application/atom+xml" />
     <updated>${datetime.datetime.now().isoformat()}Z</updated>
