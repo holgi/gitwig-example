@@ -13,7 +13,7 @@
     <entry py:for="blog_post in content.content">
         <title>${blog_post.headers["title"]}</title>
         <link rel="alternate" href="${settings.url_prefix}/${'/'.join(blog_post.get_url_parts())}" type="text/html"/>
-        <id>${blog_post.headers['uuid']}</id>
+        <id>urn:uuid:${blog_post.headers['uuid']}</id>
         <author>
             <name>${settings.author}</name>
         </author>
