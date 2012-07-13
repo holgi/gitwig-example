@@ -5,7 +5,10 @@ body {
 
 pre,code {
     font-size:12px; }
-
+    
+code {
+    color: #554433; }
+    
 header {
     text-transform: uppercase; }
 
